@@ -1,0 +1,1111 @@
+/******************************************************************
+
+Stylesheet: ベーススタイル
+
+z-indexは100ずつ
+
+******************************************************************/
+
+body {
+  font-family: "tbchibirgothicplusk-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: $spGlobalTextSize;
+  color: $GlobalTextColor;
+}
+
+// アンカー
+a {
+  text-decoration: none;
+  color: $GlobalTextColor;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+p,
+dt,
+dd {
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+// reservertion, contactのフォント
+.text-cursive {
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+// 画面幅設定
+.contet-width {
+  width: 80%;
+  max-width: $contentMaxWidth;
+  margin: 0 auto;
+}
+
+// メインタイトル
+.main-title {
+  font-size: $spTitle;
+}
+
+// ヘッダー
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $spHeaderHeight;
+  // transition:background-color .3s ;
+  &__bg-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $spHeaderHeight;
+    background-color: #fff;
+    opacity: 0.7;
+    // z-index: 0;
+  }
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @extend .contet-width;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    z-index: 400;
+  }
+  &__logo {
+    width: 200px;
+    height: 22px;
+  }
+
+  // お問い合わせページのボタン
+  &__btn {
+    padding: 6px 10px;
+    display: inline-block;
+    font-size: 12px;
+    background-color: #e2e1e1;
+    border-radius: 7px;
+  }
+}
+
+// グローバルメニュー
+.global-nav {
+  position: fixed;
+  z-index: 300;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $White;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &__container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__list {
+    text-align: center;
+    margin-bottom: $smallMargin;
+  }
+  &__link {
+    font-weight: bold;
+    // btnに上書き
+    width: 60%;
+  }
+}
+
+// ハンバーガーメニュー
+.humberger-menu {
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    // border: none;
+    // outline: none;
+    & > span {
+      background-color: $GlobalTextColor;
+      display: block;
+      width: 30px;
+      height: $spHumbergerMenuHeight;
+      margin-bottom: 6px;
+      transition: transform 0.3s;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ハンバーガーメニューがクリックされたとき
+.menu-open {
+  &.header {
+    background-color: #fff;
+  }
+  & .humberger-menu {
+    &__btn {
+      & > span {
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(135deg);
+        }
+        &:nth-child(2) {
+          transform: translateX(-20px) scaleX(0);
+        }
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(-135deg);
+        }
+      }
+    }
+  }
+  & .global-nav {
+    visibility: visible;
+    opacity: 0.95;
+  }
+}
+
+// メインビジュアル
+.main-visual {
+  padding-top: $spHeaderHeight;
+  &__visual {
+    & > img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  // &__logo {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   & > img {
+  //     transform: scale(0.3);
+  //     // background-color: black;
+  //   }
+  // }
+}
+
+// MORIWAKI Videoについて
+.about {
+  background-image: url(../images/heart.png);
+  background-repeat: no-repeat;
+  background-position: 130px 120px;
+  background-size: 90%;
+  text-align: justify;
+  &__inner {
+    @extend .contet-width;
+    position: relative;
+  }
+  &__title {
+    font-size: $spMainTitle;
+    margin-bottom: $smallMargin;
+    padding-top: 50px;
+  }
+  &__sub-title {
+    position: absolute;
+    top: 20px;
+    left: -25px;
+    font-family: "Caveat", cursive;
+    opacity: 0.8;
+    color: $pink;
+    transform: rotate(-10deg);
+    letter-spacing: 0.1em;
+    font-size: 28px;
+    display: block;
+  }
+  &__texts {
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+  &__btn {
+    padding-bottom: $smallPadding;
+    text-align: center;
+  }
+}
+
+// PV
+.promotion-video {
+  width: 100%;
+  &__inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .video-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    height: 0;
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__btn {
+    padding-top: 40px;
+    text-align: center;
+  }
+}
+
+// ご利用の流れ
+.flow {
+  &__inner {
+    @extend .contet-width;
+  }
+  &__title {
+    font-size: $spMainTitle;
+    padding-top: 50px;
+    margin-bottom: $smallMargin;
+  }
+}
+
+// 特徴
+.feature {
+  &__inner {
+    @extend .contet-width;
+  }
+
+  &__title {
+    font-size: $spMainTitle;
+    padding-top: 50px;
+    margin-bottom: $smallMargin;
+  }
+  &__cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__card {
+    // margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .card {
+    &__img {
+      margin-bottom: 10px;
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__textarea {
+      @extend .contet-width;
+      width: 90%;
+      text-align: justify;
+    }
+
+    &__title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    &__text {
+      // 森脇俊樹とは？
+      &--btn {
+        position: relative;
+        display: block;
+        font-size: 10px;
+        background-color: $btn-gray;
+        width: 70%;
+        padding: 5px 3px;
+        margin: 10px 0 0 auto;
+        cursor: pointer;
+        &::before {
+          content: "";
+          position: absolute;
+          left: -13px;
+          width: 10px;
+          height: 8px;
+          top: 0;
+          background: $btn-gray;
+          border-radius: 50%;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          left: -30px;
+          width: 15px;
+          height: 12px;
+          top: -10px;
+          background: $btn-gray;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+// お客様の声
+.customer {
+  // スタティックコンテキスト形成のため
+  position: relative;
+  z-index: 0;
+  &__title {
+    padding-top: 50px;
+    margin-bottom: $smallMargin;
+    font-size: $spMainTitle;
+    @extend .contet-width;
+  }
+  &__cards {
+    display: flex;
+    max-width: $contentMaxWidth;
+    margin: 0 auto;
+  }
+  &__card {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+  .card {
+    &__img {
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__textarea {
+      width: 90%;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+    &__text {
+      font-size: 12px;
+    }
+    &__btn-container {
+      text-align: center;
+    }
+    &__btn {
+      display: inline-block;
+      padding: 7px 0;
+      width: 90%;
+      margin: 15px 0 5px 0;
+      font-size: 12px;
+      position: relative;
+      border: 1px solid $border-gray;
+      border-radius: 7px;
+      background-color: #fff;
+      cursor: pointer;
+      & > i {
+        position: absolute;
+        top: calc(50% - 0.35em);
+        right: 8px;
+      }
+    }
+  }
+}
+
+// お客様のビデオ
+.customer-video {
+  padding-top: 5%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 300;
+  background-color: #fff;
+
+  &__inner {
+    @extend .contet-width;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__title {
+    margin-bottom: 5px;
+  }
+  &__video-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+  &__video-container {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.close-btn {
+  cursor: pointer;
+  background-color: transparent;
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  & > span {
+    background-color: $GlobalTextColor;
+    display: block;
+    width: 30px;
+    height: $spHumbergerMenuHeight;
+    &:nth-child(1) {
+      transform: rotate(135deg);
+    }
+    &:nth-child(2) {
+      transform: translateY(-2px) rotate(-135deg);
+    }
+  }
+}
+
+// 料金とキャンペーン情報
+.money {
+  background-color: $bgColor;
+  &__inner {
+    @extend .contet-width;
+    margin-top: 50px;
+    border-radius: 7px;
+    padding: 30px 0;
+  }
+  &__title {
+    font-size: $spMainTitle;
+    margin-bottom: $smallMargin;
+  }
+  &__plan {
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 7px;
+  }
+  .plan {
+    &__inner {
+      // width: 90%;
+      // margin: 0 auto;
+      padding: 20px 0;
+    }
+    &__title {
+      text-align: center;
+      position: relative;
+      padding: 0 55px;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 30px;
+        height: 1px;
+        background-color: $GlobalTextColor;
+      }
+      &::before {
+        left: 55px;
+      }
+      &::after {
+        right: 55px;
+      }
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   bottom: -15px;
+      //   display: inline-block;
+      //   width: 20%;
+      //   height: 3px;
+      //   left: 50%;
+      //   transform:translateX(-50%) ;
+      //   background-color: $GlobalTextColor;
+      //   border-radius: 7px;
+      //   opacity: .8;
+      // }
+    }
+    &__money {
+      text-align: center;
+      &--small {
+        display: block;
+        margin-top: 15px;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 12px;
+          left: 39%;
+
+          transform: rotate(10deg);
+          width: 65px;
+          height: 1px;
+          background-color: $pink;
+        }
+      }
+      &--off {
+        margin-top: 3px;
+      }
+      &--large {
+        line-height: 0;
+        font-size: 20px;
+        background: linear-gradient(transparent 75%, $pink 75%);
+      }
+    }
+    &__text {
+      width: 80%;
+      margin: 0 auto;
+      border-top: 1px solid $GlobalTextColor;
+      margin-top: 30px;
+      padding-top: 15px;
+      text-align: justify;
+    }
+  }
+  &__text {
+    font-size: 12px;
+  }
+}
+
+// 質問
+.faq {
+  &__inner {
+    @extend .contet-width;
+  }
+  &__title {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+.accordion {
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  padding: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__title {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--text {
+      flex-basis: 90%;
+    }
+    &--btn {
+      position: relative;
+      flex-basis: 4%;
+      text-align: center;
+      &:before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 12px;
+        height: 2px;
+        background-color: $GlobalTextColor;
+        transition: 0.3s;
+        transform: rotate(-90deg);
+      }
+      &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 12px;
+        height: 2px;
+        background-color: $GlobalTextColor;
+        transition: 0.2s;
+      }
+      // is-openがついているとき
+      &.is-open {
+        &:before {
+          transform: rotate(0deg);
+        }
+        &:after {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  &__body {
+    padding-top: 20px;
+    text-align: justify;
+  }
+}
+// MoriwakiVideoの思い
+.message {
+  &__inner {
+    width: 90%;
+    border-radius: 7px;
+    max-width: $contentMaxWidth;
+    background: linear-gradient(to bottom right, #fff, #efefef);
+    margin: 50px 0;
+    padding: 30px 10%;
+    position: relative;
+    text-align: justify;
+  }
+  &__title {
+    padding-bottom: 30px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  &__text {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__name {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+// 俊樹さんについて
+.about-toshiki {
+  position: relative;
+  &__inner {
+    margin-bottom: 50px;
+    // background-color: $bgColor;
+  }
+  // &__sub-title{
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   font-family: "Caveat", cursive;
+  //   color: $GlobalTextColor;
+  //   transform: rotate(-10deg);
+  //   letter-spacing: 0.1em;
+  //   font-size: 23px;
+  //   display: block;
+  // }
+  &__img {
+    margin-bottom: 20px;
+    & > img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: 50% 0;
+    }
+  }
+  &__btn {
+    opacity: 0.95;
+    position: absolute;
+    text-align: center;
+    padding: 10px 10px;
+    background-color: $btn-gray;
+    border-radius: 7px;
+    width: 100%;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+  }
+  &__cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    transition: opacity 0.3s, visibility 0.3s;
+    visibility: hidden;
+    z-index: 500;
+  }
+  &__video-container {
+    @extend .contet-width;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__video-text {
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+
+  &__video-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-bottom: 30px;
+  }
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__sns {
+    text-align: center;
+    &--title {
+      margin-bottom: 10px;
+    }
+  }
+  .is-open & {
+    &__cover {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// ページトップボタン
+// .page-top {
+//   .page-top__btn {
+//     position: fixed;
+//     bottom: 20px;
+//     right: 20px;
+//     z-index: 90;
+//   }
+// }
+
+// 予約、お問い合わせセクション
+.reservertion,
+.contact {
+  background-color: #fff;
+  padding-bottom: 30px;
+  &__inner {
+    text-align: center;
+  }
+  &__title {
+    font-size: $spMainTitle;
+  }
+  &__subtitle {
+    margin-bottom: 10px;
+    display: block;
+  }
+  &__text {
+    margin-bottom: 10px;
+  }
+}
+.contact {
+  margin-bottom: 50px;
+}
+// 予約ボタン（下に固定する）
+.reserve-bottom-btn {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  &__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 0;
+  }
+  &__btn {
+    // btnに上書き
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 0;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    visibility: hidden;
+  }
+  .inview & {
+    &__inner {
+      opacity: 0.7;
+      background-color: #fff;
+      visibility: visible;
+    }
+    &__btn {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+// お問い合わせ(contact.html)
+.contact-form {
+  padding-top: $spHeaderHeight;
+  &__inner {
+    padding-top: 50px;
+    @extend .contet-width;
+    text-align: center;
+  }
+  &__title {
+    font-size: $spMainTitle;
+    margin-bottom: $smallMargin;
+  }
+  .formrun {
+    &__label {
+      display: block;
+      text-align: left;
+      margin-bottom: 10px;
+      margin-top: $smallMargin;
+    }
+    &__input {
+      min-height: 40px;
+    }
+    &__textarea {
+      min-height: 150px;
+    }
+    &__input,
+    &__textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      transition: all 0.3s;
+      &:focus {
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+      }
+    }
+    // 必須マーク
+    // &__required {
+    //   font-size: 12px;
+    //   padding: 3px 10px;
+    //   background-color: #e2e1e1;
+    //   border-radius: 7px;
+    //   margin-left: 10px;
+    // }
+
+    &__btn {
+      border: none;
+      margin-bottom: 50px;
+      margin-top: $smallMargin;
+      background-color: $btn-gray;
+      color: $GlobalTextColor;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    // エラーメッセージ
+    .formrun-system-show {
+      color: #ff0000;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+}
+// 予約ページ(reserve.html)
+.reserve-form {
+  padding-top: $spHeaderHeight;
+  &__inner {
+    padding-top: 50px;
+    @extend .contet-width;
+    text-align: center;
+  }
+  &__title {
+    font-size: $spMainTitle;
+    margin-bottom: $smallMargin;
+  }
+  &__text {
+    text-align: justify;
+  }
+
+  .formrun {
+    &__label {
+      display: block;
+      text-align: left;
+      margin-bottom: 10px;
+      margin-top: $smallMargin;
+    }
+    &__input {
+      min-height: 40px;
+    }
+    &__textarea {
+      min-height: 150px;
+    }
+    &__input,
+    &__textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      transition: all 0.3s;
+      &:focus {
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    // 必須マーク
+    // &__required {
+    //   font-size: 12px;
+    //   padding: 3px 10px;
+    //   background-color: #e2e1e1;
+    //   border-radius: 7px;
+    //   margin-left: 10px;
+    // }
+
+    &__btn {
+      border: none;
+      margin-bottom: 50px;
+      margin-top: $smallMargin;
+      background-color: $btn-gray;
+      color: $GlobalTextColor;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    // エラーメッセージ
+    .formrun-system-show {
+      color: #ff0000;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+}
+// この部分はpayment.htmlでも使用するため独立させる。
+.money-plan,
+.pay-way {
+
+  &__label{
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  &__radio-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__radio {
+    display: none;
+    transition: background 0.2s;
+    &:checked + label {
+      background: $btn-gray;
+    }
+  }
+  &__radio-label {
+    font-size: 12px;
+    border: 1px solid $border-gray;
+    flex-basis: 48%;
+    display: inline-block;
+    border-radius: 7px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 0;
+  }
+}
+
+// payment.html
+.payment {
+  padding-top: $spHeaderHeight;
+  &__inner {
+    padding-top: 50px;
+    @extend .contet-width;
+  }
+  &__title {
+    text-align: center;
+    font-size: $spMainTitle;
+    margin-bottom: $smallMargin;
+  }
+  &__text {
+    text-align: justify;
+    margin-bottom: 50px;
+  }
+}
+
+.credit-payment{
+  &__title{
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+  }
+  &__online-payment,
+  &__offline-payment {
+    margin-bottom: 30px;
+  }
+}
+
+.bank-payment{
+  
+}
+
+
+
+// stripeのデザイン
+button.stripe-button-el,
+button.stripe-button-el > span {
+  background-image: none;
+  font-size: 14px;
+  font-family: "tbchibirgothicplusk-pro", sans-serif;
+  outline: none;
+  background: $pink !important;
+  border-radius: 7px;
+  color: #fff;
+  min-height: 45px;
+  width: 100%;
+  box-shadow: none;
+}
+
+// フッター
+.footer {
+  background-color: #4a4949;
+  z-index: 200;
+  width: 100%;
+  &__inner {
+    @extend .contet-width;
+    padding: 50px 0 20px 0;
+    text-align: center;
+    margin-top: 20px;
+  }
+  &__logo {
+    width: 200px;
+    margin: 0 auto 20px auto;
+  }
+
+  .sns-btns {
+    margin-bottom: 20px;
+  }
+  .sns-link {
+    background-color: #fff;
+    color: $GlobalTextColor;
+  }
+
+  .copy-right {
+    font-family: serif;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+  }
+}
